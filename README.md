@@ -1,15 +1,56 @@
-# Task 2: End-to-End ML Pipeline with Scikit-learn Pipeline API
+# 📈 Telco Churn ML Pipeline
 
-## Objective
-Build a reusable and production-ready machine learning pipeline for predicting customer churn using the Telco Churn Dataset (simulated via synthetic data generation for demonstration).
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![Scikit-Learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?logo=scikit-learn&logoColor=white)
+![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?logo=pandas&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-## Methodology / Approach
-1. **Data Preprocessing**: Constructed a Scikit-learn `ColumnTransformer` to apply `StandardScaler` to numerical features (tenure, MonthlyCharges, TotalCharges) and `OneHotEncoder` to categorical features (Contract, InternetService, PaymentMethod).
-2. **Model Construction**: Combined the preprocessor and a `RandomForestClassifier` into a single Scikit-learn `Pipeline`.
-3. **Hyperparameter Tuning**: Used `GridSearchCV` to find the optimal number of estimators and max depth for the random forest.
-4. **Export**: Exported the fitted, tuned pipeline as `churn_pipeline.pkl` using `joblib` for future reuse in a production environment.
+An end-to-end, production-ready machine learning pipeline for the **DevelopersHub AI/ML Engineering Internship**. This repository demonstrates how to architect a robust data processing and classification pipeline to predict customer churn using Scikit-Learn.
 
-## Key Results / Observations
-- The pipeline correctly handles both numeric scaling and categorical encoding, preventing data leakage between train and test sets.
-- `GridSearchCV` successfully improved model performance.
-- The exported pipeline can directly take in raw inference data without separate preprocessing steps.
+## 🚀 Project Overview
+
+Customer churn is a critical metric for subscription-based businesses. This project automates the entire machine learning lifecycle—from data preprocessing to hyperparameter tuning and model export.
+
+### Key Features
+- **Scikit-Learn `Pipeline` API**: Ensures no data leakage between training and testing data by coupling preprocessing with the estimator.
+- **Robust Preprocessing**: Uses `ColumnTransformer` to apply `StandardScaler` to numerical features and `OneHotEncoder` to categorical features.
+- **Automated Hyperparameter Tuning**: Leverages `GridSearchCV` to automatically find the optimal depth and tree count for a `RandomForestClassifier`.
+- **Production Ready**: The final tuned model is serialized using `joblib`, making it instantly ready for inference on raw data.
+
+## 📂 Repository Structure
+
+```text
+telco-churn-ml-pipeline/
+├── main.py                # Core pipeline script (data gen, preprocessing, training, tuning, export)
+├── requirements.txt       # Project dependencies
+├── .gitignore             # Git ignore rules
+└── README.md              # Project documentation
+```
+
+## ⚙️ Installation & Setup
+
+Ensure you have Python installed. Clone the repository and install the dependencies:
+
+```bash
+git clone https://github.com/asraserver06/telco-churn-ml-pipeline.git
+cd telco-churn-ml-pipeline
+pip install -r requirements.txt
+```
+
+## 💻 Usage Instructions
+
+To execute the entire pipeline from start to finish, run:
+
+```bash
+python main.py
+```
+
+**What happens during execution?**
+1. Generates a synthetic but realistic Telco Churn dataset.
+2. Splits data into training and test sets.
+3. Constructs and tunes the Scikit-Learn pipeline.
+4. Outputs the `Accuracy` and `Classification Report` to the terminal.
+5. Saves the final pipeline as `churn_pipeline.pkl`.
+
+## 🤝 Acknowledgments
+Completed as part of the **DevelopersHub Corporation AI/ML Engineering Advanced Internship Tasks** (Task 2).
